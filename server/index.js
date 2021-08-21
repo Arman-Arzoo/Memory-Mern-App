@@ -1,18 +1,21 @@
+// import module 
 import express from 'express';
 import cors from 'cors';
-import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 
+// import other module
+import postroute from './routes/posts.js';
 
+// initialization express framework
 const app = express();
-
+app.use('/posts', postroute);
+// use all the module
 app.use(express.json());
-app.use(express.urlencoded({
-  extended: true
-}));
-// app.use(bodyParser.json({limit:"30mb", extended:'true'}));
-// app.use(bodyParser.urlencoded({limit:"30mb", extended:'true'}));
+app.use(express.urlencoded({extended: true}));
 app.use(cors());
+
+// set router
+
 
 
 const connection_url = "mongodb+srv://toplinegeeks:toplinegeeks123@memorycluster.fkc1w.mongodb.net/memoryapp?retryWrites=true&w=majority";
