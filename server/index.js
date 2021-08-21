@@ -8,14 +8,14 @@ import postroute from './routes/posts.js';
 
 // initialization express framework
 const app = express();
-app.use('/posts', postroute);
+
 // use all the module
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cors());
 
 // set router
-
+app.use('/posts', postroute);
 
 
 const connection_url = "mongodb+srv://toplinegeeks:toplinegeeks123@memorycluster.fkc1w.mongodb.net/memoryapp?retryWrites=true&w=majority";
