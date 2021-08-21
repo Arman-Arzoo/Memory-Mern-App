@@ -2,9 +2,9 @@ import mongoose  from "mongoose";
 
 const postSchema = mongoose.Schema({
     title: String,
-    message:string,
-    creator:string,
-    tags:[string],
+    message:String,
+    creator:String,
+    tags:[String],
     selectedFile:{
         type:Number,
         default:0
