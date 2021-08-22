@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
-    <footer class="footer-copyright text-center py-3 bg-dark">
+    <footer className="footer-copyright text-center py-3 bg-dark">
       © 2020 Copyright:
-      <a href="#"> Memoryapp.com</a>
+      <Link to="#"> Memoryapp.com</Link>
     </footer>
   );
 };

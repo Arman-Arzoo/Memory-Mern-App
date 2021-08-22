@@ -34,9 +34,8 @@ export const Header = () => {
             </li>
             <li className="nav-item">
               <button
-                className="nav-link"
+                className="nav-link btn btn-primary"
                 type="button"
-                class="btn btn-primary"
                 data-toggle="modal"
                 data-target="#exampleModalCenter"
               >
