@@ -110,7 +110,7 @@ export const Form = () => {
                 <button onClick={clear} className="btn btn-primary">
                   Clear
                 </button>
-                <button type="submit" className="btn btn-primary float-right ">
+                <button type="submit"  className="btn btn-primary float-right ">
                   Submit
                 </button>
               </div>

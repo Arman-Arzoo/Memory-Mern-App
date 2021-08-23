@@ -13,32 +13,22 @@ export const getPosts = () => async (dispatch)=>{
 };
 
 export const createPosts = (post)=> async (dispatch)=>{
-  
 
-    // try {
-    //     const requestOptions = {
-    //         method: 'POST',
-    //         headers: { "Access-Control-Allow-Origin": "*",
-    //               "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS" },
-    //         body: JSON.stringify({ title:post.title,message:post.message, selectedFile:post.selectedFile, creator:post.creator, tags:post.tags })
-    //     };
-       
-    //     fetch('http://localhost:5000/posts', requestOptions)
-    //         .then(response => response.json())
-    //         .then(data => dispatch({type:'CREATE',payload:data}));
-           
-    // } catch (error) {
-    //     console.log(error.message)
-    // }
+    fetch("http://localhost:5000/posts", {
+    method: "POST", // or 'PUT'
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(post),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      dispatch({type:'CREATE',payload:data});
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 
-
-
-    try{
-        const {data}  = await api.createNewPosts(post); 
-           console.log("pro Api",post)
-        dispatch({type:'CREATE',payload:data});
-
-    }catch(error){
-         console.log(error.message)
-    }
+   
 };

@@ -1,13 +1,18 @@
 export default (posts=[], action)=>{
 
     switch (action.type) {
-        case 'FETCH-ALL':
+        case 'FETCH-ALL':{
             return action.payload
-        case "CREATE":
+
+        }
+        case "CREATE":{
             return [...posts,action.payload]
-        default:
+          
+
+        }
+        default:{
             return posts
-            
+        }  
     }
 };
 
