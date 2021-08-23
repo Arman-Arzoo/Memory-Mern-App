@@ -13,7 +13,7 @@ export const App = () => {
        dispatch(getPosts())
     }, [dispatch])
     return (
-        <div>
+        <div className="arm-main-container">
             <BrowserRouter>
             <Header/>
             <Posts/>

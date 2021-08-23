@@ -5,7 +5,7 @@ export const getPosts = () => async (dispatch)=>{
     try {
         const {data} = await api.fetchPosts();
         dispatch({type:'FETCH-ALL', payload:data})
-        console.log("i am form action ",data)
+        // console.log("i am form action ",data)
         
     } catch (error) {
         console.log("error is form getPosts",error.message)
@@ -24,7 +24,6 @@ export const createPosts = (post)=> async (dispatch)=>{
     .then((response) => response.json())
     .then((data) => {
       dispatch({type:'CREATE',payload:data});
-      console.log(data);
     })
     .catch((error) => {
       console.error("Error:", error);

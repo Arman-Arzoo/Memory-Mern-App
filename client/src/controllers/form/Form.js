@@ -59,7 +59,7 @@ export const Form = () => {
                   id="exampleInputEmail1"
                   placeholder="Creator"
                   value={PostData.creater}
-                  onChange={(e) => setPostData({ ...PostData, creater: e.target.value })}
+                  onChange={(e) => setPostData({ ...PostData, creator: e.target.value })}
                   
                 />
               </div>

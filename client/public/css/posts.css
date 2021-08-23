@@ -1,11 +1,14 @@
 .arm-posts{
-    background: linear-gradient(286.81deg, #6BFFE8 -63.22%, #33A394 -42.05%, #41A7B8 9.52%, #358DB6 57.37%, #256A96 81.94%);
+    /* background: linear-gradient(286.81deg, #6BFFE8 -63.22%, #33A394 -42.05%, #41A7B8 9.52%, #358DB6 57.37%, #256A96 81.94%); */
 }
 .arm-container{
     margin-left: 180px !important;
 }
-
+.h1-center{
+    padding-left: 200px;
+}
 /* post css */
 .arm-card{
     width: 18rem;
 }
+.MuiCircularProgress-root {     left: 43%;     position: absolute;     top: 44vh;  }
