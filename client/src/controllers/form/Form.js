@@ -5,7 +5,7 @@ import {createPosts} from '../../action/posts';
 
 export const Form = () => {
   const [PostData ,setPostData] = useState({
-    creater:'',
+    creator:'',
     title:'',
     message:'',
     tags:'',
