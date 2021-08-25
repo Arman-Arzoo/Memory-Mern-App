@@ -1,30 +1,26 @@
-import React, {useState} from "react";
-import FileBase from 'react-file-base64';
-import { useDispatch } from 'react-redux';
-import {createPosts} from '../../action/posts';
+import React, { useState } from "react";
+import FileBase from "react-file-base64";
+import { useDispatch } from "react-redux";
+import { createPosts } from "../../action/posts";
 
 export const Form = () => {
-  const [PostData ,setPostData] = useState({
-    creator:'',
-    title:'',
-    message:'',
-    tags:'',
-    selectedFile:''
+  const [PostData, setPostData] = useState({
+    creator: "",
+    title: "",
+    message: "",
+    tags: "",
+    selectedFile: "",
   });
 
   const dispatch = useDispatch();
 
-  const clear = ()=>{
+  const clear = () => {};
 
-  }
+  const handelform = (e) => {
+    e.preventDefault();
+    dispatch(createPosts(PostData));
+  };
 
-  const handelform = (e)=>{ 
-     e.preventDefault();
-     dispatch(createPosts(PostData))
-
-
-  }
- 
   return (
     <div
       className="modal fade"
@@ -51,7 +47,7 @@ export const Form = () => {
           </div>
           <div className="modal-body">
             {/* form data */}
-            <form onSubmit={handelform} >
+            <form onSubmit={handelform}>
               <div className="form-group">
                 <input
                   type="text"
@@ -59,8 +55,9 @@ export const Form = () => {
                   id="exampleInputEmail1"
                   placeholder="Creator"
                   value={PostData.creater}
-                  onChange={(e) => setPostData({ ...PostData, creator: e.target.value })}
-                  
+                  onChange={(e) =>
+                    setPostData({ ...PostData, creator: e.target.value })
+                  }
                 />
               </div>
 
@@ -71,7 +68,9 @@ export const Form = () => {
                   id="exampleInputPassword1"
                   placeholder="Title"
                   value={PostData.title}
-                  onChange={(e)=>setPostData({...PostData, title: e.target.value})}
+                  onChange={(e) =>
+                    setPostData({ ...PostData, title: e.target.value })
+                  }
                 />
               </div>
 
@@ -82,7 +81,9 @@ export const Form = () => {
                   rows="3"
                   placeholder="Message"
                   value={PostData.message}
-                  onChange={(e)=>setPostData({...PostData, message: e.target.value})}
+                  onChange={(e) =>
+                    setPostData({ ...PostData, message: e.target.value })
+                  }
                 ></textarea>
               </div>
 
@@ -93,24 +94,27 @@ export const Form = () => {
                   id="exampleInputPassword1"
                   placeholder="Tags"
                   value={PostData.tag}
-                  onChange={(e)=>setPostData({...PostData, tags: e.target.value})}
+                  onChange={(e) =>
+                    setPostData({ ...PostData, tags: e.target.value })
+                  }
                 />
               </div>
 
-              <FileBase 
-               type="file"
-               multiple={false} 
-               onDone={({base64})=> setPostData({...PostData, selectedFile:base64})}
-               >
-              </FileBase>
-          <br/>
-          <br/>
-          
+              <FileBase
+                type="file"
+                multiple={false}
+                onDone={({ base64 }) =>
+                  setPostData({ ...PostData, selectedFile: base64 })
+                }
+              ></FileBase>
+              <br />
+              <br />
+
               <div className="container">
                 <button onClick={clear} className="btn btn-primary">
                   Clear
                 </button>
-                <button type="submit"  className="btn btn-primary float-right ">
+                <button type="submit" className="btn btn-primary float-right ">
                   Submit
                 </button>
               </div>
