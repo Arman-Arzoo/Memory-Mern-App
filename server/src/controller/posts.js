@@ -1,5 +1,5 @@
 import mongoose  from 'mongoose';
-import PostMessage from '../models/postMessage.js';
+import PostMessage from '../Database/models/postMessage.js';
 
 // get all the posts
 export const getPosts = async (req,res)=>{

@@ -1,31 +1,15 @@
-// import module 
-import express from 'express';
-import cors from 'cors';
-import mongoose from 'mongoose';
+import {app} from './src/server.js';
+import dotenv from 'dotenv';
+import {connectToDb }  from './src/Database/index.js';
 
-// import other module
-import postroute from './routes/posts.js';
+dotenv.config();
 
-// initialization express framework
-const app = express();
+const PORT = process.env.PORT;
 
-// use all the module
-app.use(express.json({limit: '50mb'}));
-app.use(express.urlencoded({limit: '50mb'}));
-app.use(cors());
+connectToDb();
 
-// set router
-app.use('/posts', postroute);
+app.listen(PORT,()=>{
+    console.log(`app listening ot port no ${PORT}`)
+})
 
-
-const connection_url = "mongodb+srv://toplinegeeks:toplinegeeks123@memorycluster.fkc1w.mongodb.net/memoryapp?retryWrites=true&w=majority";
-const PORT = process.env.PORT || 5000;
-
-mongoose.connect(connection_url,{
-    useNewUrlParser:true,
-    useUnifiedTopology:true
-}).then(()=>app.listen(PORT, console.log(`Server running on port ${PORT}`)))
-.catch((error)=>console.log(error.message));
-
-mongoose.set("useFindAndModify", false);
 
