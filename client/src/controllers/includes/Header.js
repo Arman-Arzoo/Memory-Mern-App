@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Form } from "../form/Form";
 
-export const Header = () => {
+export const Header = ({currentid,setcurrentid}) => {
+ 
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light pl-5 arm-nav">
@@ -58,7 +59,7 @@ export const Header = () => {
 
       {/* modal  */}
 
-      <Form />
+      <Form  currentid={currentid} setcurrentid={setcurrentid}/>
     </>
   );
 };

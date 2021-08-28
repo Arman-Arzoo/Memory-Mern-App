@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState,useEffect} from "react";
 import FileBase from "react-file-base64";
-import { useDispatch } from "react-redux";
-import { createPosts } from "../../action/posts";
+import { useDispatch ,useSelector} from "react-redux";
+import { createPosts, updatePost, } from "../../action/posts";
+import {useHistory} from 'react-router-dom';
 
-export const Form = () => {
+
+export const Form = ({currentid,setcurrentid}) => {
+  const history = useHistory();
   const [PostData, setPostData] = useState({
     creator: "",
     title: "",
@@ -14,13 +17,41 @@ export const Form = () => {
 
   const dispatch = useDispatch();
 
-  const clear = () => {};
+
 
   const handelform = (e) => {
     e.preventDefault();
-    dispatch(createPosts(PostData));
+    if(currentid){
+    console.log("i am form 25 form.js",currentid)
+      dispatch(updatePost(currentid,PostData))
+    }else{
+
+      dispatch(createPosts(PostData));
+    }
+  clear();
+  history.push('/')
+
   };
 
+ 
+  const clear= ()=>{
+    setcurrentid(null);
+    setPostData({
+      creator: "",
+      title: "",
+      message: "",
+      tags: "",
+      selectedFile: "",
+    })
+  }
+  const post = useSelector(state => currentid? state.posts.find(p => p._id===currentid):null)
+  console.log("i am form 48 line form.js",post)
+  useEffect(() => {
+  if(post){
+    setPostData(post)
+  }
+
+  }, [post])
   return (
     <div
       className="modal fade"
@@ -34,7 +65,7 @@ export const Form = () => {
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" id="exampleModalLongTitle">
-              Create memory
+              {!currentid?"Creating":"Editing"} memory
             </h5>
             <button
               type="button"
@@ -54,7 +85,7 @@ export const Form = () => {
                   className="form-control"
                   id="exampleInputEmail1"
                   placeholder="Creator"
-                  value={PostData.creater}
+                  value={PostData.creator}
                   onChange={(e) =>
                     setPostData({ ...PostData, creator: e.target.value })
                   }
@@ -93,9 +124,9 @@ export const Form = () => {
                   className="form-control"
                   id="exampleInputPassword1"
                   placeholder="Tags"
-                  value={PostData.tag}
+                  value={PostData.tags}
                   onChange={(e) =>
-                    setPostData({ ...PostData, tags: e.target.value })
+                    setPostData({ ...PostData, tags: e.target.value.split(',')  })
                   }
                 />
               </div>
@@ -111,10 +142,10 @@ export const Form = () => {
               <br />
 
               <div className="container">
-                <button onClick={clear} className="btn btn-primary">
+                {/* <button onClick={clear} className="btn btn-primary">
                   Clear
-                </button>
-                <button type="submit" className="btn btn-primary float-right ">
+                </button> */}
+                <button type="submit"   onClick={()=>{}} className="btn btn-primary float-right " >
                   Submit
                 </button>
               </div>
