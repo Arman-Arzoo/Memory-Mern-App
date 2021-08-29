@@ -1,5 +1,5 @@
+import axios from "axios";
 import * as api from "../apis/index.js";
-
 
 export const getPosts = () => async (dispatch) => {
   try {
@@ -11,6 +11,7 @@ export const getPosts = () => async (dispatch) => {
   }
 };
 
+// create post action creator
 export const createPosts = (post) => async (dispatch) => {
   fetch("http://localhost:5000/posts", {
     method: "POST", // or 'PUT'
@@ -30,21 +31,32 @@ export const createPosts = (post) => async (dispatch) => {
 
 // let try to update the post
 
-export const updatePost = (id,post) => async (dispatch)=>{
-  console.log("line no 33 action posts.js ",id )
+export const updatePost = (id, post) => async (dispatch) => {
+  console.log("line no 33 action posts.js ", id);
   fetch(`http://localhost:5000/posts/${id}`, {
-    method: "PATCH", 
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(post),
-  })
+   })
     .then((response) => response.json())
     .then((data) => {
       dispatch({ type: "UPDATE", payload: data });
-     
     })
     .catch((error) => {
       console.error("Error:", error);
     });
-}
+};
+
+// action creator for delete user
+export const deleteUser =  (id) => async(dispatch) => {
+  
+    try {
+      await axios.delete(`http://localhost:5000/posts/${id}`)
+      dispatch({ type: "DELETE", payload: id });
+    } catch (error) {
+      console.log(error.message);
+    }
+
+};

@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import memory from "../../../img/memory.jpg";
-import { useSelector } from "react-redux";
+import { deleteUser } from "../../../action/posts.js";
+import { useSelector,useDispatch } from "react-redux";
 import { CircularProgress } from "@material-ui/core";
 import moment from "moment";
 export const Post = ({setcurrentid}) => {
   const posts = useSelector((state) => state.posts);
-
+  const dispatch = useDispatch();
   return (
     <>
       {!posts ? (
@@ -15,7 +15,7 @@ export const Post = ({setcurrentid}) => {
         <div className="row  ">
           {posts.map((post) => {
             return (
-              <div key={post._id} className="card arm-card col-sm-3 mr-5 mb-4 ">
+              <div key={post._id} className="card arm-card col-sm-5 mr-5 mb-4 ">
                 <img className="card-img-top mt-3" src={post.selectedFile} alt="Card" />
                 <div className="card-body">
                   <p className="card-title">
@@ -35,7 +35,9 @@ export const Post = ({setcurrentid}) => {
                   >
                     Update
                   </Link>
-                  <Link to="#" className="btn btn-primary ml-4">
+                  <Link to="#" className="btn btn-primary ml-4"
+                  onClick={()=>{dispatch(deleteUser(post._id))}}
+                  >
                     Delete
                   </Link>
                 </div>

@@ -22,8 +22,8 @@ export const Form = ({currentid,setcurrentid}) => {
   const handelform = (e) => {
     e.preventDefault();
     if(currentid){
-    console.log("i am form 25 form.js",currentid)
       dispatch(updatePost(currentid,PostData))
+      clear()
     }else{
 
       dispatch(createPosts(PostData));
@@ -35,13 +35,14 @@ export const Form = ({currentid,setcurrentid}) => {
 
  
   const clear= ()=>{
-    setcurrentid(null);
+    setcurrentid(0);
     setPostData({
       creator: "",
       title: "",
       message: "",
       tags: "",
       selectedFile: "",
+      
     })
   }
   const post = useSelector(state => currentid? state.posts.find(p => p._id===currentid):null)
@@ -69,6 +70,7 @@ export const Form = ({currentid,setcurrentid}) => {
             </h5>
             <button
               type="button"
+              onClick={()=>{clear()}}
               className="close"
               data-dismiss="modal"
               aria-label="Close"
