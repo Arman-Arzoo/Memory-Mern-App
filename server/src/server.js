@@ -15,5 +15,8 @@ app.use(cors());
 
 // set router
 app.use('/posts', postroute);
+app.get('/',(req,res)=>{
+  res.send("Welcome to unique-memory");
+})
 
 // module.exports = app;
