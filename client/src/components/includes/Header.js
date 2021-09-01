@@ -7,7 +7,7 @@ export const Header = ({currentid,setcurrentid}) => {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light pl-5 arm-nav">
-        <Link className="navbar-brand" to="#">
+        <Link className="navbar-brand" to="/">
           Navbar
         </Link>
         <button
@@ -24,7 +24,7 @@ export const Header = ({currentid,setcurrentid}) => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav arm-menu ">
             <li className="nav-item active">
-              <Link className="nav-link" to="#">
+              <Link className="nav-link" to="/">
                 Home <span className="sr-only">(current)</span>
               </Link>
             </li>
@@ -49,7 +49,7 @@ export const Header = ({currentid,setcurrentid}) => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link " to="#">
+              <Link className="nav-link " to="/auth">
                 Log In
               </Link>
             </li>
