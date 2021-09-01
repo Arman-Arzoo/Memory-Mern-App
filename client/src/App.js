@@ -5,7 +5,8 @@ import { Footer } from "./components/includes/Footer";
 import { Posts } from "./components/posts/posts";
 import { useDispatch } from "react-redux";
 import { getPosts } from "./action/posts";
-import { Auth } from "./components/auth/Auth";
+import { Login } from "./components/auth/Login";
+import { SignUp } from "./components/auth/SignUp";
 
 
 export const App = () => {
@@ -23,7 +24,8 @@ export const App = () => {
        
         <Switch>
           <Route exact path='/'  component={ () => (<Posts setcurrentid={setcurrentid} />)}></Route>
-          <Route path="/auth" component={Auth}></Route>
+          <Route path="/login" component={Login}></Route>
+          <Route path="/signup" component={SignUp}></Route>
         </Switch>
         <Footer />
       </BrowserRouter>

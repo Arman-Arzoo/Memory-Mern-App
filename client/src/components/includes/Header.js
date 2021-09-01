@@ -44,12 +44,12 @@ export const Header = ({currentid,setcurrentid}) => {
               </button>
             </li>
             <li className="nav-item">
-              <Link className="nav-link " to="#">
+              <Link className="nav-link " to="/signup">
                 Register
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link " to="/auth">
+              <Link className="nav-link " to="/login">
                 Log In
               </Link>
             </li>
