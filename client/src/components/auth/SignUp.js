@@ -3,7 +3,7 @@ import { GoogleLogin } from 'react-google-login'
 
 export const SignUp = () => {
     return (
-        <div className="container pt-5 bg-light mt-5 container-login-form">
+        <div className="container pt-5 bg-white mt-5 container-login-form shadow" >
         <div className="container pb-5">
             <center><h1 className="text-primary">Create an account</h1></center>
           <form>

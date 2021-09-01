@@ -1,0 +1,47 @@
+.arm-main-container {
+  position: relative;
+  height: 100vh;
+}
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+html,body{
+
+  
+  background-image: linear-gradient(to right top, #e3e8ee, #ebedf2, #f2f3f7, #f9f9fb, #ffffff);
+}
+.loading-home{
+  height: 324px;
+}
+
+
+
+
+
+
+/*FOOTER*/
+
+footer {
+  background: #16222A;
+  background: -webkit-linear-gradient(59deg, #3A6073, #16222A);
+  background: linear-gradient(59deg, #3A6073, #16222A);
+  color: white;
+  margin-top:100px;
+
+ 
+}
+
+.copy {
+  font-size: 12px;
+  padding: 10px;
+  border-top: 1px solid #FFFFFF;
+}
+
+.footer-middle {
+  padding-top: 2em;
+  color: white;
+}
+
+

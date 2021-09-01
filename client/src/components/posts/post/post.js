@@ -9,19 +9,22 @@ export const Post = ({setcurrentid}) => {
   const dispatch = useDispatch();
   return (
     <>
-      {!posts ? (
-        <CircularProgress />
+      {!posts.length ? (
+        <>
+        <CircularProgress/>
+        <div className="loading-home"></div>
+        </>
       ) : (
-        <div className="row  ">
+        <div className="row">
           {posts.map((post) => {
             return (
-              <div key={post._id} className="card arm-card col-sm-5 mr-5 mb-4 ">
+              <div key={post._id} className="card col-sm-5 mr-5 mb-4 shadow ">
                 <img className="card-img-top mt-3" src={post.selectedFile} alt="Card" />
                 <div className="card-body">
                   <p className="card-title">
                     {moment(post.createdAt).fromNow()}
-                  <h5 className="card-title">{post.title}</h5>
                   </p>
+                  <h5 className="card-title ">{post.title}</h5>
                   <p>{post.tags.map((tag) => `#${tag} `)}</p>
                   <h6 className="card-title">{post.creator}</h6>
                   <p className="card-text">{post.message}</p>
@@ -35,7 +38,7 @@ export const Post = ({setcurrentid}) => {
                   >
                     Update
                   </Link>
-                  <Link to="#" className="btn btn-primary ml-4"
+                  <Link to="#" className="btn btn-primary float-right"
                   onClick={()=>{dispatch(deleteUser(post._id))}}
                   >
                     Delete

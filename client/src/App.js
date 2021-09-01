@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { Header } from "./components/includes/Header";
+
 import { Footer } from "./components/includes/Footer";
 import { Posts } from "./components/posts/posts";
 import { useDispatch } from "react-redux";
 import { getPosts } from "./action/posts";
 import { Login } from "./components/auth/Login";
 import { SignUp } from "./components/auth/SignUp";
+import { Nav } from './components/includes/Nav';
 
 
 export const App = () => {
@@ -20,7 +21,7 @@ export const App = () => {
   return (
     <div className="arm-main-container">
       <BrowserRouter>
-        <Header currentid={currentid} setcurrentid={setcurrentid}/>
+        <Nav currentid={currentid} setcurrentid={setcurrentid}/>
        
         <Switch>
           <Route exact path='/'  component={ () => (<Posts setcurrentid={setcurrentid} />)}></Route>
