@@ -30,21 +30,19 @@ console.log(res)
       <center><h1 className="text-primary">Login to account</h1></center>
         <form>
           <div className="form-group">
-            <label for="exampleInputEmail1">Email address</label>
+            <label >Email address</label>
             <input
               type="email"
               className="form-control"
-              id="exampleInputEmail1"
               aria-describedby="emailHelp"
               placeholder="Enter email"
             />
           </div>
           <div className="form-group">
-            <label for="exampleInputPassword1">Password</label>
+            <label >Password</label>
             <input
               type="password"
               className="form-control"
-              id="exampleInputPassword1"
               placeholder="Password"
             />
           </div>

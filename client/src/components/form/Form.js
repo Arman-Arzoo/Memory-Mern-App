@@ -46,7 +46,7 @@ export const Form = ({currentid,setcurrentid}) => {
     })
   }
   const post = useSelector(state => currentid? state.posts.find(p => p._id===currentid):null)
-  console.log("i am form 48 line form.js",post)
+
   useEffect(() => {
   if(post){
     setPostData(post)
