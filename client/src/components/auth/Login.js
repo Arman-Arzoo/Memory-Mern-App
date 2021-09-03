@@ -25,10 +25,17 @@ console.log(res)
     console.log("google login fail. please try again later",error)
   }
   return (
-    <div className="container pt-5 bg-white mt-5 container-login-form shadow">
-      <div className="container pb-5">
-      <center><h1 className="text-primary">Login to account</h1></center>
-        <form>
+    <div >
+      <div className="row">
+        <div className="col-3 ">
+       {/* col 1 */}
+        </div>
+        <div className="col-6 bg-light container-login-form shadow p-4">
+          {/* col2 form */}
+            
+
+          <center><h3>Sign In</h3></center>
+          <form>
           <div className="form-group">
             <label >Email address</label>
             <input
@@ -61,7 +68,25 @@ console.log(res)
 
      
         </form>
+
+
+
+
+
+
+
+        </div>
+        <div className="col-3 ">
+       {/* col3 */}
+        </div>
+ 
       </div>
+      {/* <center>
+          <h4 className="text-primary">Create an account</h4>
+      </center> */}
+      
     </div>
   );
 };
+
+
