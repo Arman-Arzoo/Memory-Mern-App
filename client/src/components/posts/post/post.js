@@ -25,7 +25,7 @@ export const Post = ({setcurrentid}) => {
                     {moment(post.createdAt).fromNow()}
                   </p>
                   <h5 className="card-title ">{post.title}</h5>
-                  <p>{post.tags.map((tag) => `#${tag} `)}</p>
+                  <p>{post.tags.map((tag) => `#${tag}`)}</p>
                   <h6 className="card-title">{post.creator}</h6>
                   <p className="card-text">{post.message}</p>
                   <Link
