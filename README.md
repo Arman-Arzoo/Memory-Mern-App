@@ -3,5 +3,8 @@ Store your memories. This application is able to create your stories modify it o
 # Demo site
 https://unique-memory.netlify.app/
 # How To start this app
-
-Just open the project in the same directory. type cd server and other terminal for cd client and npm i and npm start on both
+1.clone the project.
+2.open in vs code.
+3.open two terminal
+4.cd client and then npm i and then npm start
+5.on the other termial cd server then npm i and then npm start
