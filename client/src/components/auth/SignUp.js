@@ -1,7 +1,20 @@
-import React from "react";
+import React ,{useState} from "react";
+
 
 export const SignUp = () => {
+  const userData = { firstName:'',lastName:'',email:'',password:'',repeatPassword:''}
+  const [user ,setUser]=useState(userData);
+
+  const formHandler = (e)=>{
+    e.preventDefault();
+
+
+  }
+  const handleChange = ()=>{
+
+  }
   return (
+
     <div>
       <div className="row">
         <div className="col-3 ">{/* col 1 */}</div>
@@ -11,7 +24,7 @@ export const SignUp = () => {
           <center>
             <h3>Sign Up</h3>
           </center>
-          <form>
+          <form onSubmit={formHandler}>
             <div className="form-group">
               <label>FirstName</label>
               <input
@@ -19,6 +32,8 @@ export const SignUp = () => {
                 className="form-control"
                 aria-describedby="emailHelp"
                 placeholder="Enter firstname"
+                value={user?.firstName}
+                onChange= {(e)=>setUser({...user, firstName:e.target.value})}
               />
             </div>
 
@@ -29,6 +44,8 @@ export const SignUp = () => {
                 className="form-control"
                 aria-describedby="emailHelp"
                 placeholder="Enter firstname"
+                 value={user?.lastName}
+                onChange= {(e)=>setUser({...user, lastName:e.target.value})}
               />
             </div>
 
@@ -39,6 +56,8 @@ export const SignUp = () => {
                 className="form-control"
                 aria-describedby="emailHelp"
                 placeholder="Enter email"
+                value={user?.email}
+                onChange= {(e)=>setUser({...user, email:e.target.value})}
               />
             </div>
 
@@ -48,6 +67,8 @@ export const SignUp = () => {
                 type="password"
                 className="form-control"
                 placeholder="Password"
+                value={user?.password}
+                onChange= {(e)=>setUser({...user, password:e.target.value})}
               />
             </div>
 
@@ -57,6 +78,8 @@ export const SignUp = () => {
                 type="password"
                 className="form-control"
                 placeholder="Confirm Password"
+                value={user?.repeatPassword}
+                onChange= {(e)=>setUser({...user, repeatPassword:e.target.value})}
               />
             </div>
 
