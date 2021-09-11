@@ -1,18 +1,21 @@
 import React ,{useState} from "react";
+import {createUser} from '../../action/user';
+import {useDispatch} from 'react-redux';
+import {useHistory} from 'react-router-dom'
 
 
 export const SignUp = () => {
   const userData = { firstName:'',lastName:'',email:'',password:'',repeatPassword:''}
   const [user ,setUser]=useState(userData);
+  const [error ,setError]= useState()
 
+  const history = useHistory();
+  const dispatch = useDispatch()
   const formHandler = (e)=>{
     e.preventDefault();
-
-
+    dispatch(createUser(user,history,setError))
   }
-  const handleChange = ()=>{
 
-  }
   return (
 
     <div>

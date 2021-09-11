@@ -22,10 +22,10 @@ const hash = bcrypt.hashSync(password,salt);
       email,
       password:hash
       })
-    try {
+     try {
         await newUser.save();
-        res.status(201).json(newPosts);     
-    } catch (error) {
+        res.status(201).json(newUser);     
+     } catch (error) {
         res.status(409).json({message:error.message});
     }
 }
