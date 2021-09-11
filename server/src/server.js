@@ -4,6 +4,7 @@ import cors from 'cors';
 
 // import other module
 import postroute from './routes/posts.js';
+import userroute from './routes/user.js';
 
 // initialization express framework
 export const app = express();
@@ -15,6 +16,7 @@ app.use(cors());
 
 // set router
 app.use('/posts', postroute);
+app.use('/user', userroute);
 app.get('/',(req,res)=>{
   res.send("Welcome to unique-memory");
 })
