@@ -1,9 +1,13 @@
-import React from "react";
+import React,{useState} from "react";
 import GoogleLogin from "react-google-login";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { SignUser } from '../../action/user';
 
 export const Login = () => {
+  const [user,setUser]= useState({email:'',password:''})
+  const [error,setError]=useState(null)
+
   const dispatch = useDispatch();
   const history = useHistory();
   const googleSuccess = async (res) => {
@@ -22,6 +26,12 @@ export const Login = () => {
   const googleFailure = (error) => {
     console.log("google login fail. please try again later", error);
   };
+
+  const formHandler = (e)=>{
+    e.preventDefault();
+    dispatch(SignUser(user,history,setError))
+
+  }
   return (
     <div>
       <div className="row">
@@ -32,7 +42,8 @@ export const Login = () => {
           <center>
             <h3>Sign In</h3>
           </center>
-          <form>
+          <form onSubmit={formHandler}>
+            <h5>{error}</h5>
             <div className="form-group">
               <label>Email address</label>
               <input
@@ -40,11 +51,15 @@ export const Login = () => {
                 className="form-control"
                 aria-describedby="emailHelp"
                 placeholder="Enter email"
+                value={user?.email}
+                onChange={(e)=>{setUser({...user, email:e.target.value})}}
               />
             </div>
             <div className="form-group">
               <label>Password</label>
               <input
+               value={user?.password}
+               onChange={(e)=>{setUser({...user, password:e.target.value})}}
                 type="password"
                 className="form-control"
                 placeholder="Password"
