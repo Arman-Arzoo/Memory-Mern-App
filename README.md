@@ -9,8 +9,8 @@ https://unique-memory.netlify.app/
 1. clone the project.
 2. open in vs code.
 3. open two terminal
-4. cd client and then npm i and then npm start
-5. on the other termial cd server then npm i and then npm start
+4. ### `cd client` and then ### `npm i` and then ### `npm start`
+5. on the other termial ### `cd server` then ### `npm i` and then ### `npm start`
 
 # Demo site Version 2.0.0
 working on version 2 in which I build user registration and authtication and many more soom. stay tune
