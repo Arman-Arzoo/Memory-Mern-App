@@ -13,4 +13,4 @@ https://unique-memory.netlify.app/
 5. on the other termial `cd server` then  `npm i` and then `npm start`
 
 # Demo site Version 2.0.0
-working on version 2 in which I build user registration and authtication and many more soom. stay tune
+working on version 2 in which I build user registration and authtication and many more soon. stay tune
