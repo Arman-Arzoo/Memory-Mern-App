@@ -13,7 +13,7 @@ export const createUser = (user,history,setError) => async (dispatch) => {
          setError(data.message)
         }else
         {
-         dispatch({ type: "AUTH", payload: data });
+         dispatch({ type: "AUTH", data: data });
          history.push('/')
         }
      
@@ -37,7 +37,8 @@ export const SignUser = (user,history,setError) => async (dispatch) => {
          setError(data.message)
         }else
         {
-         dispatch({ type: "AUTH", payload: data });
+         dispatch({ type: "AUTH", data: data});
+         console.log(data.result)
          history.push('/')
         }
      
