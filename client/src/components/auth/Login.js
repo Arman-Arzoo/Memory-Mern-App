@@ -10,6 +10,7 @@ export const Login = () => {
 
   const dispatch = useDispatch();
   const history = useHistory();
+  
   const googleSuccess = async (res) => {
     console.log(res);
     const result = res?.profileObj;
