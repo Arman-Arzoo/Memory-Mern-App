@@ -17,15 +17,16 @@ if(password !== repeatPassword){
 const salt = bcrypt.genSaltSync(10)
 const hash = bcrypt.hashSync(password,salt);
 
- const result = new User({
+ const newUser = new User({
       firstName,
       lastName,
       email,
-      password:hash
+      password:hash,
+      name:`${firstName} ${lastName}`
       })
      try {
-        await result.save();
-        res.status(201).json(result);     
+        await newUser.save();
+        res.status(201).json({result:newUser});     
      } catch (error) {
         res.status(409).json({message:error.message});
     }
