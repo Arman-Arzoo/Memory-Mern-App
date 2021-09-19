@@ -22,7 +22,8 @@ const hash = bcrypt.hashSync(password,salt);
       lastName,
       email,
       password:hash,
-      name:`${firstName} ${lastName}`
+      name:`${firstName} ${lastName}`,
+      
       })
      try {
         await newUser.save();

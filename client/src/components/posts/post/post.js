@@ -7,6 +7,8 @@ import moment from "moment";
 export const Post = ({setcurrentid}) => {
   const posts = useSelector((state) => state.posts);
   const dispatch = useDispatch();
+
+  const user = JSON.parse(localStorage.getItem('profile'));
   return (
     <>
       {!posts.length ? (
@@ -38,11 +40,13 @@ export const Post = ({setcurrentid}) => {
                   >
                     Update
                   </Link>
+                  {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
                   <Link to="#" className="btn btn-primary float-right"
                   onClick={()=>{dispatch(deleteUser(post._id))}}
                   >
                     Delete
                   </Link>
+                  )}
                 </div>
               </div>
             );
