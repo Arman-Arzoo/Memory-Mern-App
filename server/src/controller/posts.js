@@ -31,7 +31,7 @@ export const updatePost = async ( req, res) => {
     const post = req.body;
     const {id:_id} = req.params
      if(!mongoose.Types.ObjectId.isValid(_id)) {
-         return res.status(404).send("no account with that id ")
+         return res.status(404).send("no post with that id ")
      }
     
     try {
@@ -46,7 +46,7 @@ export const updatePost = async ( req, res) => {
 export const deleteUser = async(req,res)=>{
 
     const {id:_id} = req.params;
-    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).json({message:"no id to update"})
+    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).json({message:"no post with that id to update"})
     const deletepost = await PostMessage.findByIdAndRemove(_id)
                                          
     res.json({message:"post Deleted Successfuly"})
