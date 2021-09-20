@@ -40,13 +40,13 @@ export const Post = ({setcurrentid}) => {
                   >
                     Update
                   </Link>
-                  {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
+                  {/* {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && ( */}
                   <Link to="#" className="btn btn-primary float-right"
                   onClick={()=>{dispatch(deleteUser(post._id))}}
                   >
                     Delete
                   </Link>
-                  )}
+                  {/* )} */}
                 </div>
               </div>
             );
