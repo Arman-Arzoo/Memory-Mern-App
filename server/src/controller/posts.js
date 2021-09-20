@@ -11,7 +11,6 @@ export const getPosts = async (req,res)=>{
        res.status(404).json({message:error.message});   
    }
 }
-
 // create a new post
 export const createPosts = async(req,res)=>{
     const { title, message, selectedFile, creator, tags } = req.body;
@@ -23,9 +22,7 @@ export const createPosts = async(req,res)=>{
         res.status(409).json({message:error.message});
     }
 }
-
 // update the post with id
-
 export const updatePost = async ( req, res) => {
 
     const post = req.body;
@@ -41,7 +38,6 @@ export const updatePost = async ( req, res) => {
         res.status(404).json({message:error.message})
     }
 }
-
 // delete the post
 export const deleteUser = async(req,res)=>{
 
@@ -51,7 +47,6 @@ export const deleteUser = async(req,res)=>{
                                          
     res.json({message:"post Deleted Successfuly"})
 }
-
 // likepost the post
 export const likePost = async(req,res)=>{
 
