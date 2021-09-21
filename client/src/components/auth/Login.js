@@ -18,6 +18,7 @@ export const Login = () => {
 
     try {
       dispatch({ type: "AUTH", data: { result, token } });
+      localStorage.setItem("jwt",token);
       history.push("/");
     } catch (error) {
       console.log(error);
