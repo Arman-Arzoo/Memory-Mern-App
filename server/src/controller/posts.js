@@ -18,7 +18,7 @@ export const createPosts = async (req, res) => {
     message,
     selectedFile,
     tags,
-    creator,
+    creator:req.user._id,
   });
   try {
     await newPosts.save();

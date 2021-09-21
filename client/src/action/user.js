@@ -28,6 +28,7 @@ export const SignUser = (user,history,setError) => async (dispatch) => {
     method: "POST", 
     headers: {
       "Content-Type": "application/json",
+      'x-auth-token':""
     },
     body: JSON.stringify(user),
   })
