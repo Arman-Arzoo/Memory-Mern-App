@@ -28,7 +28,7 @@ export const SignUser = (user,history,setError) => async (dispatch) => {
     method: "POST", 
     headers: {
       "Content-Type": "application/json",
-      'x-auth-token':""
+    
     },
     body: JSON.stringify(user),
   })
@@ -38,6 +38,7 @@ export const SignUser = (user,history,setError) => async (dispatch) => {
          setError(data.message)
         }else
         {
+        localStorage.setItem("jwt",data.token);
          dispatch({ type: "AUTH", data: data});
          console.log(data.result)
          history.push('/')

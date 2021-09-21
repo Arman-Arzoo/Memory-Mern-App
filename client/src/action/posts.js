@@ -13,10 +13,12 @@ export const getPosts = () => async (dispatch) => {
 
 // create post action creator
 export const createPosts = (post) => async (dispatch) => {
+
   fetch("http://localhost:5000/posts", {
     method: "POST", // or 'PUT'
     headers: {
       "Content-Type": "application/json",
+      "x-auth-token":localStorage.getItem("jwt")
     },
     body: JSON.stringify(post),
   })
@@ -37,6 +39,7 @@ export const updatePost = (id, post) => async (dispatch) => {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
+      "x-auth-token":localStorage.getItem("jwt")
     },
     body: JSON.stringify(post),
    })
@@ -53,7 +56,11 @@ export const updatePost = (id, post) => async (dispatch) => {
 export const deleteUser =  (id) => async(dispatch) => {
   
     try {
-      await axios.delete(`http://localhost:5000/posts/${id}`)
+      await axios.delete(`http://localhost:5000/posts/${id}`,{
+        headers: {
+          "x-auth-token":localStorage.getItem("jwt")
+        }
+      })
       dispatch({ type: "DELETE", payload: id });
     } catch (error) {
       console.log(error.message);
