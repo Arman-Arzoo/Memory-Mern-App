@@ -27,7 +27,8 @@ const hash = bcrypt.hashSync(password,salt);
       })
      try {
         await newUser.save();
-        res.status(201).json({result:newUser});     
+        const token = oldUser.generateAuthToken(); 
+        res.header('x-auth-token',token).status(201).json({result:newUser});     
      } catch (error) {
         res.status(409).json({message:error.message});
     }
@@ -45,10 +46,10 @@ export const signUser = async (req, res) => {
   
       if (!isPasswordCorrect) return res.status(400).json({ message: "Invalid credentials" });
   
-      const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, 'text', { expiresIn: "1h" });
-  
+      // const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, 'text', { expiresIn: "1h" });
+       const token = oldUser.generateAuthToken(); 
       res.status(200).json({ result: oldUser, token });
     } catch (err) {
-      res.status(500).json({ message: "Something went wrong"});
+      res.status(500).json({ message: "Something went wrong",err});
     }
   };

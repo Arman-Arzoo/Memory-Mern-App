@@ -1,6 +1,7 @@
 import mongoose  from "mongoose";
+import jwt from 'jsonwebtoken';
 
-const userSchema = mongoose.Schema({
+const userSchema = new mongoose.Schema({
     firstName: String,
     lastName:String,
     email:String,
@@ -14,6 +15,12 @@ const userSchema = mongoose.Schema({
    
    
 },{timeStamp: true});
+
+
+userSchema.methods.generateAuthToken = function(){
+    const token = jwt.sign({ _id: this._id , name: this.firstName + " " + this.lastName }, 'text');
+    return token;
+}
 
 const User = mongoose.model('User', userSchema);
 export default User;

@@ -14,7 +14,7 @@ export const createUser = (user,history,setError) => async (dispatch) => {
         }else
         {
          dispatch({ type: "AUTH", data: data });
-         history.push('/')
+         history.push('/login')
         }
      
     })

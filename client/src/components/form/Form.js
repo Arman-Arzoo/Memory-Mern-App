@@ -8,7 +8,6 @@ import {useHistory} from 'react-router-dom';
 export const Form = ({currentid,setcurrentid}) => {
   const history = useHistory();
   const [PostData, setPostData] = useState({
-    creator: "",
     title: "",
     message: "",
     tags: "",
@@ -37,7 +36,6 @@ export const Form = ({currentid,setcurrentid}) => {
   const clear= ()=>{
     setcurrentid(0);
     setPostData({
-      creator: "",
       title: "",
       message: "",
       tags: "",
@@ -81,18 +79,7 @@ export const Form = ({currentid,setcurrentid}) => {
           <div className="modal-body">
             {/* form data */}
             <form onSubmit={handelform}>
-              <div className="form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="exampleInputEmail1"
-                  placeholder="Creator"
-                  value={PostData.creator}
-                  onChange={(e) =>
-                    setPostData({ ...PostData, creator: e.target.value })
-                  }
-                />
-              </div>
+          
 
               <div className="form-group">
                 <input

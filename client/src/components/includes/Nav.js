@@ -39,7 +39,7 @@ export const Nav = ({ currentid, setcurrentid }) => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent-4">
           <ul className="navbar-nav ml-auto pr-5">
-            {!user ? (
+            {!user?.token ? (
               <>
                 <li className="nav-item ">
                   <Link className="nav-link" to="/about">
