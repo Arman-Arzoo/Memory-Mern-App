@@ -8,8 +8,6 @@ const PORT = process.env.PORT;
 
 connectToDb();
 
-
-
 app.listen(PORT,()=>{
     console.log(`app listening ot port no ${PORT}`)
 })

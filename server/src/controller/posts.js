@@ -4,7 +4,7 @@ import PostMessage from "../Database/models/postMessage.js";
 // get all the posts
 export const getPosts = async (req, res) => {
   try {
-    const PostMessages = await PostMessage.find()
+    const PostMessages = await PostMessage.find().populate('creator','_id name imageUrl')
     res.status(200).json(PostMessages);
   } catch (error) {
     res.status(404).json({ message: error.message });
@@ -18,7 +18,8 @@ export const createPosts = async (req, res) => {
     message,
     selectedFile,
     tags,
-    creator:req.user._id,
+    creator:req.user._id
+   
   });
   try {
     await newPosts.save();
