@@ -12,5 +12,10 @@ https://unique-memory.netlify.app/
 4. ### `cd client` and then `npm i` and then  `npm start`
 5. on the other termial `cd server` then  `npm i` and then `npm start`
 
+# Environmental variable
+PORT=your port number
+MONGO_URL=your connection string
+PRIVATE=your private key
+
 # Demo site Version 2.0.0
 working on version 2 in which I build user registration and authtication and many more soon. stay tune
