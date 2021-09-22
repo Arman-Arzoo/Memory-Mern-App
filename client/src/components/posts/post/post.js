@@ -36,24 +36,27 @@ export const Post = ({ setcurrentid }) => {
                             {moment(post.createdAt).fromNow()}
                           </div>
                         </div>
-                        {(user?.result?.googleId === post?.creator._id || user?.result?._id === post?.creator._id) && (
-                        <Link
-                          to="#"
-                          className="d-inline-block text-muted ml-3 float-right"
-                          type="button"
-                          data-toggle="modal"
-                          data-target="#exampleModalCenter"
-                          onClick={() => setcurrentid(post._id)}
-                        >
-                          <i
-                            className="fa fa-pencil-square-o"
-                            aria-hidden="true"
-                          ></i>
-                        </Link>
+                        {(user?.result?.googleId === post?.creator._id ||
+                          user?.result?._id === post?.creator._id) && (
+                          <Link
+                            to="#"
+                            className="d-inline-block text-muted ml-3 float-right"
+                            type="button"
+                            data-toggle="modal"
+                            data-target="#exampleModalCenter"
+                            onClick={() => setcurrentid(post._id)}
+                          >
+                            <i
+                              className="fa fa-pencil-square-o"
+                              aria-hidden="true"
+                            ></i>
+                          </Link>
                         )}
                       </div>
-                      
-                      <p className="text-muted small">{post.tags.map((tag) => `#${tag}`)}</p>
+
+                      <p className="text-muted small">
+                        {post.tags.map((tag) => `#${tag}`)}
+                      </p>
 
                       <p>{post.message}</p>
                       <Link
@@ -74,18 +77,18 @@ export const Post = ({ setcurrentid }) => {
                         <i class="fa fa-comment" aria-hidden="true"></i>
                       </Link> */}
 
-
-                   {(user?.result?.googleId === post?.creator._id || user?.result?._id === post?.creator._id) && (
-                      <Link
-                        to="#"
-                        className="d-inline-block text-muted ml-3 float-right"
-                        onClick={() => {
-                          dispatch(deleteUser(post._id));
-                        }}
-                      >
-                        <i className="fa fa-trash" aria-hidden="true"></i>
-                      </Link>
-                   )}
+                      {(user?.result?.googleId === post?.creator._id ||
+                        user?.result?._id === post?.creator._id) && (
+                        <Link
+                          to="#"
+                          className="d-inline-block text-muted ml-3 float-right"
+                          onClick={() => {
+                            dispatch(deleteUser(post._id));
+                          }}
+                        >
+                          <i className="fa fa-trash" aria-hidden="true"></i>
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </div>

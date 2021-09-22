@@ -61,24 +61,26 @@ export const Nav = ({ currentid, setcurrentid }) => {
               </>
             ) : (
               <>
-                <li className="nav-item pt-3 pl-3">
+                <li className="nav-item pr-4">
                   <Link
                     className="nav-link"
                     data-toggle="modal"
                     data-target="#exampleModalCenter"
                     to="#"
                   >
-                    create Post
+                    
+                    <i class="fa fa-plus-square" aria-hidden="true">post</i>
+                    
                   </Link>
                 </li>
 
-                <li className="nav-item pt-3 pl-3">
+                <li className="nav-item ">
                   <Link onClick={logout} className="nav-link" to="#">
-                    Log out
+                  <i class="fa fa-sign-out" aria-hidden="true"></i>
                   </Link>
                 </li>
 
-                <li className="nav-item pl-3">
+                {/* <li className="nav-item pl-3">
                   <img
                     className="rounded-circle profile "
                     src={user?.result?.imageUrl}
@@ -88,7 +90,7 @@ export const Nav = ({ currentid, setcurrentid }) => {
                   
                   
 
-                </li>
+                </li> */}
               </>
             )}
           </ul>
