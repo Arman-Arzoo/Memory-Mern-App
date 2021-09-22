@@ -21,7 +21,7 @@ export const Post = ({ setcurrentid }) => {
           <div className="row">
             {posts.map((post) => {
               return (
-                <div className="col-lg-6">
+                <div className="col-lg-4">
                   <div className="card mb-4">
                     <div className="card-body">
                       <div className="media mb-3">
@@ -36,6 +36,7 @@ export const Post = ({ setcurrentid }) => {
                             {moment(post.createdAt).fromNow()}
                           </div>
                         </div>
+                        {(user?.result?.googleId === post?.creator._id || user?.result?._id === post?.creator._id) && (
                         <Link
                           to="#"
                           className="d-inline-block text-muted ml-3 float-right"
@@ -49,7 +50,10 @@ export const Post = ({ setcurrentid }) => {
                             aria-hidden="true"
                           ></i>
                         </Link>
+                        )}
                       </div>
+                      
+                      <p className="text-muted small">{post.tags.map((tag) => `#${tag}`)}</p>
 
                       <p>{post.message}</p>
                       <Link
@@ -65,11 +69,13 @@ export const Post = ({ setcurrentid }) => {
                         <strong>123</strong>{" "}
                         <i className="fa fa-thumbs-up" aria-hidden="true"></i>
                       </Link>
-                      <Link href="" className="d-inline-block text-muted ml-3">
+                      {/* <Link href="" className="d-inline-block text-muted ml-3">
                         <strong>12</strong>{" "}
                         <i class="fa fa-comment" aria-hidden="true"></i>
-                      </Link>
+                      </Link> */}
 
+
+                   {(user?.result?.googleId === post?.creator._id || user?.result?._id === post?.creator._id) && (
                       <Link
                         to="#"
                         className="d-inline-block text-muted ml-3 float-right"
@@ -79,6 +85,7 @@ export const Post = ({ setcurrentid }) => {
                       >
                         <i className="fa fa-trash" aria-hidden="true"></i>
                       </Link>
+                   )}
                     </div>
                   </div>
                 </div>
