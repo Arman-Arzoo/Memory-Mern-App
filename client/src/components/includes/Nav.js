@@ -22,9 +22,9 @@ export const Nav = ({ currentid, setcurrentid }) => {
 
   return (
     <div>
-      <nav className="mb-4 navbar navbar-expand-lg navbar-light cyan bg-light p-2 shadow-lg ">
+      <nav className="mb-4 navbar navbar-expand-lg navbar-light cyan bg-light p-2 border-bottom ">
         <Link className="navbar-brand font-bold pl-5" to="/">
-          Unique Memory
+          <h3 className='brand'>Unique <span>Memory</span></h3>
         </Link>
         <button
           className="navbar-toggler"

@@ -7,14 +7,11 @@
   padding: 0;
   margin: 0;
 }
-html,body{
 
-  
-  background-image: linear-gradient(to right top, #e3e8ee, #ebedf2, #f2f3f7, #f9f9fb, #ffffff);
-}
 .loading-home{
   height: 324px;
 }
+
 
 
 

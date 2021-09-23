@@ -1,5 +1,22 @@
+/* header */
+.brand{
+    font-family: serif;
+    font-weight: bold;
+}
+.brand::first-letter{
+    color: red;
+}
+
+.brand span { display: inline-block; }
+
+.brand span::first-letter {
+    color: red;
+    
+}
 
 /* post css */
+
+
 .arm-card{
     width: 18rem;
 }
@@ -56,4 +73,32 @@ body {
 }
 .default-style .ui-bordered {
     border: 1px solid rgba(24,28,33,0.06);
+}
+
+
+/* fa icon class hover */
+.fa-pencil-square-o:hover{
+    color: rgb(0, 255, 0) ;
+
+}
+.fa-thumbs-up:hover{
+    color: blue;
+}
+.fa-trash:hover{
+    color: red;
+}
+.fa-plus-square:hover{
+    color: rgb(0, 255, 0) ;
+}
+.fa-sign-out:hover{
+    color: red;
+    font-size: 25px;
+}
+
+/* icon style */
+.fa-sign-out{
+    font-size: 20px !important;
+}
+.fa-plus-square{
+    font-size: 20px !important;
 }
