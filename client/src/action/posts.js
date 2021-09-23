@@ -68,3 +68,22 @@ export const deleteUser =  (id) => async(dispatch) => {
 
 };
 
+// like post
+export const likePost = (id) => async (dispatch) => {
+
+  fetch(`http://localhost:5000/posts/${id}/likePost`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      "x-auth-token":localStorage.getItem("jwt")
+    },
+    
+   })
+    .then((response) => response.json())
+    .then((data) => {
+      dispatch({ type: "LIKE", payload: data });
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+};

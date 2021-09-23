@@ -4,7 +4,10 @@ import PostMessage from "../Database/models/postMessage.js";
 // get all the posts
 export const getPosts = async (req, res) => {
   try {
-    const PostMessages = await PostMessage.find().populate('creator','_id name imageUrl')
+    const PostMessages = await PostMessage.find().populate(
+      "creator",
+      "_id name imageUrl"
+    );
     res.status(200).json(PostMessages);
   } catch (error) {
     res.status(404).json({ message: error.message });
@@ -18,8 +21,7 @@ export const createPosts = async (req, res) => {
     message,
     selectedFile,
     tags,
-    creator:req.user._id
-   
+    creator: req.user._id,
   });
   try {
     await newPosts.save();
@@ -59,14 +61,31 @@ export const deleteUser = async (req, res) => {
 // likepost the post
 export const likePost = async (req, res) => {
   const { id } = req.params;
-  if (!mongoose.Types.ObjectId.isValid(id))
+  if (!req.user._id) {
+    return res.json({ message: "Unauthenticated" });
+  }
+  if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ message: "no post to like" });
-  const post = await PostMessage.findById(id);
-  const likepost = await PostMessage.findByIdAndUpdate(
-    id,
-    { likeCount: post.likeCount + 1 },
-    { new: true }
-  );
+  }
+  try {
+    const post = await PostMessage.findById(id);
 
-  res.json(likepost);
+    const index = post.likes.findIndex((id) => id ===String(req.user._id));
+
+    if(index == -1){
+      post.likes.push(req.user._id)
+    }else{
+      post.likes = post.filter((id)=> id !== req.user._id)
+    }
+
+    const likepost = await PostMessage.findByIdAndUpdate(
+      id,
+      post,
+      { new: true }
+    );
+
+    res.status(200).json(likepost);
+  } catch (ex) {
+    res.status(500).json({ message: "Post deleted successfully." });
+  }
 };

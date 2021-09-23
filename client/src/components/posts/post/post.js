@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { deleteUser } from "../../../action/posts.js";
+import { deleteUser,likePost } from "../../../action/posts.js";
 import { useSelector, useDispatch } from "react-redux";
 import { CircularProgress } from "@material-ui/core";
 import moment from "moment";
@@ -60,7 +60,7 @@ export const Post = ({ setcurrentid }) => {
 
                       <p>{post.message}</p>
                       <Link
-                        href=""
+                        to=""
                         className="ui-rect ui-bg-cover"
                         style={{
                           "background-image": `url(${post.selectedFile})`,
@@ -68,11 +68,11 @@ export const Post = ({ setcurrentid }) => {
                       ></Link>
                     </div>
                     <div className="card-footer">
-                      <Link href="" className="d-inline-block text-muted">
+                      <Link onClick={()=>likePost(post._id)} disabled={!post.result} to="" className="d-inline-block text-muted">
                         <strong>123</strong>{" "}
                         <i className="fa fa-thumbs-up" aria-hidden="true"></i>
                       </Link>
-                      {/* <Link href="" className="d-inline-block text-muted ml-3">
+                      {/* <Link to="" className="d-inline-block text-muted ml-3">
                         <strong>12</strong>{" "}
                         <i class="fa fa-comment" aria-hidden="true"></i>
                       </Link> */}
