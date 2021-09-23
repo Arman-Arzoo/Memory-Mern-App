@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { deleteUser,likePost } from "../../../action/posts.js";
+import { deleteUser, likePost } from "../../../action/posts.js";
 import { useSelector, useDispatch } from "react-redux";
 import { CircularProgress } from "@material-ui/core";
 import moment from "moment";
@@ -9,6 +9,22 @@ export const Post = ({ setcurrentid }) => {
   const dispatch = useDispatch();
 
   const user = JSON.parse(localStorage.getItem("profile"));
+
+  // const Likes = () => {
+  //   posts.map((post)=>{
+  //   if (post.likes.length > 0) {
+  //     return post.likes.find((like) => like === (user?.result?.googleId || user?.result?._id))
+  //       ? (
+  //         <><ThumbUpAltIcon fontSize="small" />&nbsp;{post.likes.length > 2 ? `You and ${post.likes.length - 1} others` : `${post.likes.length} like${post.likes.length > 1 ? 's' : ''}` }</>
+  //       ) : (
+  //         <><ThumbUpAltOutlined fontSize="small" />&nbsp;{post.likes.length} {post.likes.length === 1 ? 'Like' : 'Likes'}</>
+  //       );
+  //   }
+
+  //   return <><ThumbUpAltOutlined fontSize="small" />&nbsp;Like</>;
+  // })
+  // };
+
   return (
     <>
       {!posts.length ? (
@@ -21,7 +37,7 @@ export const Post = ({ setcurrentid }) => {
           <div className="row">
             {posts.map((post) => {
               return (
-                <div className="col-lg-4">
+                <div className="col-lg-4" key={post._id}>
                   <div className="card mb-4">
                     <div className="card-body">
                       <div className="media mb-3">
@@ -63,15 +79,20 @@ export const Post = ({ setcurrentid }) => {
                         to=""
                         className="ui-rect ui-bg-cover"
                         style={{
-                          "background-image": `url(${post.selectedFile})`,
+                          backgroundImage: `url(${post.selectedFile})`,
                         }}
                       ></Link>
                     </div>
                     <div className="card-footer">
-                      <Link onClick={()=>likePost(post._id)} disabled={!post.result} to="" className="d-inline-block text-muted">
-                        <strong>123</strong>{" "}
+                      <Link
+                        onClick={() => dispatch(likePost(post._id))}
+                        to="#"
+                        className="d-inline-block text-muted"
+                      >
+                        <strong>{post.likes.length} </strong>{" "}
                         <i className="fa fa-thumbs-up" aria-hidden="true"></i>
                       </Link>
+
                       {/* <Link to="" className="d-inline-block text-muted ml-3">
                         <strong>12</strong>{" "}
                         <i class="fa fa-comment" aria-hidden="true"></i>

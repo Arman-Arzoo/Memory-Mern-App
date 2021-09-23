@@ -29,6 +29,7 @@ export const SignUp = () => {
           </center>
           <form onSubmit={formHandler}>
             <div className="form-group">
+              <p>{error}</p>
               <label>FirstName</label>
               <input
                 type="text"
