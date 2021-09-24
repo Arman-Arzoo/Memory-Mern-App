@@ -6,7 +6,6 @@ import { SignUser } from '../../action/user';
 
 export const Login = () => {
   const [user,setUser]= useState({email:'',password:''})
-  const [error,setError]=useState(null)
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -31,7 +30,8 @@ export const Login = () => {
 
   const formHandler = (e)=>{
     e.preventDefault();
-    dispatch(SignUser(user,history,setError))
+    dispatch(SignUser(user,history))
+
 
   }
   return (
@@ -45,7 +45,6 @@ export const Login = () => {
             <h3>Sign In</h3>
           </center>
           <form onSubmit={formHandler}>
-            <h5>{error}</h5>
             <div className="form-group">
               <label>Email address</label>
               <input

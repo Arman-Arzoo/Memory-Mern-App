@@ -7,13 +7,13 @@ import {useHistory} from 'react-router-dom'
 export const SignUp = () => {
   const userData = { firstName:'',lastName:'',email:'',password:'',repeatPassword:''}
   const [user ,setUser]=useState(userData);
-  const [error ,setError]= useState()
+
 
   const history = useHistory();
   const dispatch = useDispatch()
   const formHandler = (e)=>{
     e.preventDefault();
-    dispatch(createUser(user,history,setError))
+    dispatch(createUser(user,history))
   }
 
   return (
@@ -29,7 +29,6 @@ export const SignUp = () => {
           </center>
           <form onSubmit={formHandler}>
             <div className="form-group">
-              <p>{error}</p>
               <label>FirstName</label>
               <input
                 type="text"

@@ -1,5 +1,6 @@
+import { toast } from 'react-toastify';
 // create user action creator
-export const createUser = (user,history,setError) => async (dispatch) => {
+export const createUser = (user,history) => async (dispatch) => {
   fetch("http://localhost:5000/user/signup", {
     method: "POST", 
     headers: {
@@ -10,11 +11,13 @@ export const createUser = (user,history,setError) => async (dispatch) => {
     .then((response) => response.json())
     .then((data) => {
         if(data.message){
-         setError(data.message)
+          toast.error(data.message)
         }else
         {
          dispatch({ type: "AUTH", data: data });
+         toast.success("user successfuly created")
          history.push('/login')
+         
         }
      
     })
@@ -23,7 +26,7 @@ export const createUser = (user,history,setError) => async (dispatch) => {
     });
 };
 
-export const SignUser = (user,history,setError) => async (dispatch) => {
+export const SignUser = (user,history) => async (dispatch) => {
   fetch("http://localhost:5000/user/signin", {
     method: "POST", 
     headers: {
@@ -35,12 +38,13 @@ export const SignUser = (user,history,setError) => async (dispatch) => {
     .then((response) => response.json())
     .then((data) => {
         if(data.message){
-         setError(data.message)
+         toast.error(data.message)
+       
         }else
         {
         localStorage.setItem("jwt",data.token);
          dispatch({ type: "AUTH", data: data});
-         console.log(data.result)
+         toast.success("Login successfully")
          history.push('/')
         }
      
