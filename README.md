@@ -1,3 +1,5 @@
+# New Look
+![Version 2 0 0 memory app](https://user-images.githubusercontent.com/51259303/134485308-0c3e94b2-0f27-41f1-a888-8d44fef20a80.PNG)
 # Memory-Mern-App
 Store your memories. This application is able to create your stories modify it or even delete if you want. This application is build using Mernstack with redux state management.
 # Demo site Version 1.0.0
@@ -20,4 +22,5 @@ PRIVATE=your private key
 # Demo site Version 2.0.0
 working on version 2 in which I build user registration and authtication and many more soon. stay tune
 
-![memory demo](https://user-images.githubusercontent.com/51259303/134353060-db1b0c85-091a-445f-8f60-1f695970a336.PNG)
+![Version 2 0 0 memory app](https://user-images.githubusercontent.com/51259303/134485308-0c3e94b2-0f27-41f1-a888-8d44fef20a80.PNG)
+
