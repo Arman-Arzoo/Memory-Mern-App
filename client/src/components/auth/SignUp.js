@@ -21,7 +21,7 @@ export const SignUp = () => {
     <div>
       <div className="row">
         <div className="col-3 ">{/* col 1 */}</div>
-        <div className="col-6 bg-light container-login-form shadow p-4">
+        <div className="col-6 bg-light container-login-form border p-4">
           {/* col2 form */}
 
           <center>
