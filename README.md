@@ -24,3 +24,11 @@ working on version 2 in which I build user registration and authtication and man
 
 ![Version 2 0 0 memory app](https://user-images.githubusercontent.com/51259303/134485308-0c3e94b2-0f27-41f1-a888-8d44fef20a80.PNG)
 
+# Key Features
+1. user auth
+2. user create a post
+3. update a post
+4. delete a post
+5. user can like other user post
+
+# More features soom comming
