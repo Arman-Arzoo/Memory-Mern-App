@@ -13,12 +13,11 @@ export const getPosts = () => async (dispatch) => {
 
 // create post action creator
 export const createPosts = (post) => async (dispatch) => {
-
   fetch("http://localhost:5000/posts", {
     method: "POST", // or 'PUT'
     headers: {
       "Content-Type": "application/json",
-      "x-auth-token":localStorage.getItem("jwt")
+      "x-auth-token": localStorage.getItem("jwt"),
     },
     body: JSON.stringify(post),
   })
@@ -39,10 +38,10 @@ export const updatePost = (id, post) => async (dispatch) => {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      "x-auth-token":localStorage.getItem("jwt")
+      "x-auth-token": localStorage.getItem("jwt"),
     },
     body: JSON.stringify(post),
-   })
+  })
     .then((response) => response.json())
     .then((data) => {
       dispatch({ type: "UPDATE", payload: data });
@@ -53,32 +52,28 @@ export const updatePost = (id, post) => async (dispatch) => {
 };
 
 // action creator for delete user
-export const deleteUser =  (id) => async(dispatch) => {
-  
-    try {
-      await axios.delete(`http://localhost:5000/posts/${id}`,{
-        headers: {
-          "x-auth-token":localStorage.getItem("jwt")
-        }
-      })
-      dispatch({ type: "DELETE", payload: id });
-    } catch (error) {
-      console.log(error.message);
-    }
-
+export const deleteUser = (id) => async (dispatch) => {
+  try {
+    await axios.delete(`http://localhost:5000/posts/${id}`, {
+      headers: {
+        "x-auth-token": localStorage.getItem("jwt"),
+      },
+    });
+    dispatch({ type: "DELETE", payload: id });
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
 // like post
 export const likePost = (id) => async (dispatch) => {
-
   fetch(`http://localhost:5000/posts/${id}/likePost`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      "x-auth-token":localStorage.getItem("jwt")
+      "x-auth-token": localStorage.getItem("jwt"),
     },
-    
-   })
+  })
     .then((response) => response.json())
     .then((data) => {
       dispatch({ type: "LIKE", payload: data });

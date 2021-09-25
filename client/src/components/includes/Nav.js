@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { Form } from "../form/Form";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 export const Nav = ({ currentid, setcurrentid }) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
- 
+
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
@@ -13,6 +14,7 @@ export const Nav = ({ currentid, setcurrentid }) => {
   const logout = () => {
     dispatch({ type: "LOGOUT" });
     setUser(null);
+    toast.success("You logging out");
     history.push("/login");
   };
 
@@ -24,7 +26,9 @@ export const Nav = ({ currentid, setcurrentid }) => {
     <div>
       <nav className="mb-4 navbar navbar-expand-lg navbar-light cyan bg-light p-2 border-bottom ">
         <Link className="navbar-brand font-bold pl-5" to="/">
-          <h3 className='brand'>Unique <span>Memory</span></h3>
+          <h3 className="brand">
+            Unique <span>Memory</span>
+          </h3>
         </Link>
         <button
           className="navbar-toggler"
@@ -68,15 +72,15 @@ export const Nav = ({ currentid, setcurrentid }) => {
                     data-target="#exampleModalCenter"
                     to="#"
                   >
-                    
-                    <i class="fa fa-plus-square" aria-hidden="true">post</i>
-                    
+                    <i class="fa fa-plus-square" aria-hidden="true">
+                      post
+                    </i>
                   </Link>
                 </li>
 
                 <li className="nav-item ">
                   <Link onClick={logout} className="nav-link" to="#">
-                  <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>
                   </Link>
                 </li>
 
