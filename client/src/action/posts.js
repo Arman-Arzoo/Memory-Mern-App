@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as api from "../apis/index.js";
+import { toast } from "react-toastify";
 
 export const getPosts = () => async (dispatch) => {
   try {
