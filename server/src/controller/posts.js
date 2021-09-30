@@ -85,3 +85,23 @@ export const likePost = async (req, res) => {
     res.status(500).json({ message: "Some thing worong ", err });
   }
 };
+
+// likepost the post
+export const commentPost = async (req, res) => {
+  const { id } = req.params;
+  const { value } = req.body;
+
+  try {
+    const post = await PostMessage.findById(id);
+
+    post.comments.push(value);
+
+    const commentPost = await PostMessage.findByIdAndUpdate(id, post, {
+      new: true,
+    });
+
+    res.status(200).json(commentPost);
+  } catch (err) {
+    res.status(500).json({ message: "Some thing worong ", err });
+  }
+};
