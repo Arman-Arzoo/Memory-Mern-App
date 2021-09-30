@@ -32,3 +32,4 @@ working on version 2 in which I build user registration and authtication and man
 5. user can like other user post
 
 # More features soom comming
+working on comment a post
