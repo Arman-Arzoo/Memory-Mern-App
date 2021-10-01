@@ -78,10 +78,10 @@ export const Post = ({ setcurrentid }) => {
                         <i className="fa fa-thumbs-up" aria-hidden="true"></i>
                       </Link>
 
-                      {/* <Link to="" className="d-inline-block text-muted ml-3">
+                      <Link to="" className="d-inline-block text-muted ml-3">
                         <strong>12</strong>{" "}
                         <i class="fa fa-comment" aria-hidden="true"></i>
-                      </Link> */}
+                      </Link>
 
                       {(user?.result?.googleId === post?.creator._id ||
                         user?.result?._id === post?.creator._id) && (
