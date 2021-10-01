@@ -1,6 +1,5 @@
 import axios from "axios";
 import * as api from "../apis/index.js";
-import { toast } from "react-toastify";
 
 export const getPosts = () => async (dispatch) => {
   try {
@@ -78,6 +77,25 @@ export const likePost = (id) => async (dispatch) => {
     .then((response) => response.json())
     .then((data) => {
       dispatch({ type: "LIKE", payload: data });
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+};
+
+// comment  post
+export const commentPost = (value, id) => async (dispatch) => {
+  fetch(`http://localhost:5000/posts/${id}/commentPost`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      "x-auth-token": localStorage.getItem("jwt"),
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      dispatch({ type: "LIKE", payload: data });
+      return data.comments;
     })
     .catch((error) => {
       console.error("Error:", error);
