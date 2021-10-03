@@ -3,6 +3,7 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import { Form } from "../form/Form";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import { getPostBySearch } from "../../action/posts";
 
 export const Nav = ({ currentid, setcurrentid }) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -22,6 +23,28 @@ export const Nav = ({ currentid, setcurrentid }) => {
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, [location]);
 
+  // search a post
+  const [search, setSearch] = useState("");
+  const useQuery = () => {
+    return new URLSearchParams(useLocation().search);
+  };
+
+  const query = useQuery();
+  const searchQuery = query.get("searchQuery  ");
+
+  const searchPost = () => {
+    if (search.trim()) {
+      dispatch(getPostBySearch({ search }));
+      history.push(`/posts/search?searchQuery=${search || "none"}`);
+    } else {
+      history.push("/");
+    }
+  };
+  const handelKeyPress = (e) => {
+    if (e.keyCode === 13) {
+      searchPost();
+    }
+  };
   return (
     <div>
       <nav className="mb-4 navbar navbar-expand-lg navbar-light cyan bg-light p-2 border-bottom ">
@@ -41,8 +64,22 @@ export const Nav = ({ currentid, setcurrentid }) => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent-4">
+        <div
+          className="collapse navbar-collapse "
+          id="navbarSupportedContent-4"
+        >
           <ul className="navbar-nav ml-auto pr-5">
+            <div className="form-group has-search   ">
+              <span className="fa fa-search form-control-feedback"></span>
+              <input
+                onKeyDown={handelKeyPress}
+                value={search}
+                type="text"
+                className="form-control"
+                placeholder="Search"
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </div>
             {!user?.token ? (
               <>
                 <li className="nav-item ">
@@ -72,7 +109,7 @@ export const Nav = ({ currentid, setcurrentid }) => {
                     data-target="#exampleModalCenter"
                     to="#"
                   >
-                    <i class="fa fa-plus-square" aria-hidden="true">
+                    <i className="fa fa-plus-square" aria-hidden="true">
                       post
                     </i>
                   </Link>
@@ -80,7 +117,7 @@ export const Nav = ({ currentid, setcurrentid }) => {
 
                 <li className="nav-item ">
                   <Link onClick={logout} className="nav-link" to="#">
-                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    <i className="fa fa-sign-out" aria-hidden="true"></i>
                   </Link>
                 </li>
 

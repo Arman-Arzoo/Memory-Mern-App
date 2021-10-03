@@ -7,11 +7,13 @@ import {
   deleteUser,
   likePost,
   commentPost,
+  getPostsBySearch,
 } from "../controller/posts.js";
 const router = express.Router();
 
 router.get("/", getPosts);
 router.post("/", auth, createPosts);
+router.get("/search", getPostsBySearch);
 router.patch("/:id", auth, updatePost);
 router.delete("/:id", auth, deleteUser);
 router.patch("/:id/likePost", auth, likePost);

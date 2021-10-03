@@ -101,3 +101,24 @@ export const commentPost = (value, id) => async (dispatch) => {
       console.error("Error:", error);
     });
 };
+
+// search a  post
+export const getPostBySearch = (searchQuery) => async (dispatch) => {
+  fetch(
+    `http://localhost:5000/posts/search?searchQuery=${
+      searchQuery.search || "none"
+    }`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      dispatch({ type: "FETCH_BY_SEARCH", payload: { data } });
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+};

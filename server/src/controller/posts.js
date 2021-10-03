@@ -86,7 +86,7 @@ export const likePost = async (req, res) => {
   }
 };
 
-// likepost the post
+// commentpost the post
 export const commentPost = async (req, res) => {
   const { id } = req.params;
   const { value } = req.body;
@@ -103,5 +103,19 @@ export const commentPost = async (req, res) => {
     res.status(200).json(commentPost);
   } catch (err) {
     res.status(500).json({ message: "Some thing worong ", err });
+  }
+};
+
+// get post by search
+export const getPostsBySearch = async (req, res) => {
+  const { searchQuery } = req.query;
+
+  try {
+    const title = new RegExp(searchQuery, "i");
+    const posts = await PostMessage.find({ title });
+
+    res.json({ data: posts });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
   }
 };
