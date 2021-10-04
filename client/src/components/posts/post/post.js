@@ -6,7 +6,6 @@ import { CircularProgress } from "@material-ui/core";
 import moment from "moment";
 export const Post = ({ setcurrentid }) => {
   const posts = useSelector((state) => state.posts);
-  console.log("i am line no 9 post.js", posts);
 
   const dispatch = useDispatch();
 
@@ -60,6 +59,7 @@ export const Post = ({ setcurrentid }) => {
                       <p className="text-muted small">
                         {post.tags.map((tag) => `#${tag}`)}
                       </p>
+                      <p className="text-muted small">{post.title}</p>
 
                       <p>{post.message}</p>
                       <Link
@@ -82,7 +82,7 @@ export const Post = ({ setcurrentid }) => {
 
                       <Link to="" className="d-inline-block text-muted ml-3">
                         <strong>12</strong>{" "}
-                        <i class="fa fa-comment" aria-hidden="true"></i>
+                        <i className="fa fa-comment" aria-hidden="true"></i>
                       </Link>
 
                       {(user?.result?.googleId === post?.creator._id ||

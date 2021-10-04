@@ -3,7 +3,7 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import { Form } from "../form/Form";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { getPostBySearch } from "../../action/posts";
+import { getPostBySearch, getPosts } from "../../action/posts";
 
 export const Nav = ({ currentid, setcurrentid }) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -21,16 +21,17 @@ export const Nav = ({ currentid, setcurrentid }) => {
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")));
-  }, [location]);
+    dispatch(getPosts());
+  }, [location, dispatch]);
 
   // search a post
   const [search, setSearch] = useState("");
-  const useQuery = () => {
-    return new URLSearchParams(useLocation().search);
-  };
+  // const useQuery = () => {
+  //   return new URLSearchParams(useLocation().search);
+  // };
 
-  const query = useQuery();
-  const searchQuery = query.get("searchQuery");
+  // const query = useQuery();
+  // const searchQuery = query.get("searchQuery");
 
   const searchPost = () => {
     if (search.trim()) {
