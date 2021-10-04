@@ -114,7 +114,7 @@ export const getPostsBySearch = async (req, res) => {
     const title = new RegExp(searchQuery, "i");
     const posts = await PostMessage.find({ title });
 
-    res.json({ data: posts });
+    res.json(posts);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }

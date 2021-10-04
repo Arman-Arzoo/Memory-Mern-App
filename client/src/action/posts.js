@@ -105,9 +105,7 @@ export const commentPost = (value, id) => async (dispatch) => {
 // search a  post
 export const getPostBySearch = (searchQuery) => async (dispatch) => {
   fetch(
-    `http://localhost:5000/posts/search?searchQuery=${
-      searchQuery.search || "none"
-    }`,
+    `http://localhost:5000/posts/search?searchQuery=${searchQuery || "none"}`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -116,7 +114,7 @@ export const getPostBySearch = (searchQuery) => async (dispatch) => {
   )
     .then((response) => response.json())
     .then((data) => {
-      dispatch({ type: "FETCH_BY_SEARCH", payload: { data } });
+      dispatch({ type: "FETCH_BY_SEARCH", payload: data });
     })
     .catch((error) => {
       console.error("Error:", error);

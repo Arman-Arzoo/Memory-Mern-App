@@ -30,11 +30,11 @@ export const Nav = ({ currentid, setcurrentid }) => {
   };
 
   const query = useQuery();
-  const searchQuery = query.get("searchQuery  ");
+  const searchQuery = query.get("searchQuery");
 
   const searchPost = () => {
     if (search.trim()) {
-      dispatch(getPostBySearch({ search }));
+      dispatch(getPostBySearch(search));
       history.push(`/posts/search?searchQuery=${search || "none"}`);
     } else {
       history.push("/");

@@ -6,13 +6,15 @@ import { CircularProgress } from "@material-ui/core";
 import moment from "moment";
 export const Post = ({ setcurrentid }) => {
   const posts = useSelector((state) => state.posts);
+  console.log("i am line no 9 post.js", posts);
+
   const dispatch = useDispatch();
 
   const user = JSON.parse(localStorage.getItem("profile"));
 
   return (
     <>
-      {!posts.length ? (
+      {!posts?.length ? (
         <>
           <CircularProgress />
           <div className="loading-home"></div>
