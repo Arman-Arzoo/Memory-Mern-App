@@ -1,4 +1,4 @@
-import { mongourl, dbStreamHandler } from "./dbconfig.js";
+import { mongourl, dbStreamHandler, configObj } from "./dbconfig.js";
 // const {mongourl, configObj,dbStreamHandler } = require('./dbconfig.js');
 import mongoose from "mongoose";
 
